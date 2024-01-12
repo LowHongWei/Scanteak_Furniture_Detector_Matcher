@@ -171,14 +171,14 @@ def get_scanteak_products(url):
         for product in products:
             data = {}
             name = product.find("a", class_="bc-sf-filter-product-item-title").text.strip()
-            price = product.find("span", class_="bc-sf-filter-product-item-sale-price").text.strip()
-            item_cat = product.find("h1", class_="page-title").text.strip()
+            # price = product.find("span", class_="bc-sf-filter-product-item-regular-price").text.strip()
+            # item_cat = product.find("h1", class_="page-title").text.strip()
             item_url = "https://scanteak.com.sg/" + product.find("a")["href"]
-            image_url = product.find("img")["src"]
-
+            image_url = "https://cdn.shopify.com/s/files/1/0133/8304/1081/" + product.find("img", class_="bc-sf-filter-product-item-main-image")["src"]
+            print(image_url)
             data["name"] = name
-            data["price"] = price
-            data["item_cat"] = item_cat
+            # data["price"] = price
+            data["item_cat"] = "TEAK SOFA AND DAYBEDS"
             data["item_url"] = item_url
             data["image_url"] = image_url
             #         item_name = (json.loads(item.find(class_='itemInfo').input['value'])['name'])
